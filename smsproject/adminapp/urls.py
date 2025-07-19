@@ -38,7 +38,8 @@ urlpatterns = [
     path("addfaculty/",views.addfaculty,name="addfaculty"),
     path("delete_faculty/",views.delete_faculty, name="delete_faculty"),
     path("delete_faculty/<int:fid>",views.delete_faculty,name="faculty_deletion"),
-
+    path("updatefaculty", views.updatefaculty, name="updatefaculty"),
+    path("facultyupdated/<int:fid>", views.updatefaculty, name="facultyupdated"),
 
 
     path("veiwcourse/", views.view_courses, name="view_courses"),

@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import Admin,Student,Faculty,Course,FacultyCourseMapping
-from .forms import AddFacultyForm, AddStudentForm, StudentForm
+from .forms import AddFacultyForm, AddStudentForm, StudentForm, FacultyForm
 
 
 # from django.http import HttpResponse
@@ -145,6 +145,25 @@ def addfaculty(request):
             messages.error(request,"Failed to Add Faculty!!")
             return redirect("addfaculty")
     return render(request, "addfaculty.html",{"form":form, "adminuname":auname})
+
+def updatefaculty(request, fid=None):
+    auname = request.session["auname"]
+    if fid:
+        faculty = get_object_or_404(Faculty, facultyid=fid)
+        if request.method=="POST":
+            form = FacultyForm(request.POST,instance=faculty)
+            if form.is_valid():
+                form.save()
+                messages.success(request,"Faculty Updated Successfully!!")
+                return redirect("updatefaculty")
+            else:
+                messages.error(request,"Failed to update Faculty Data")
+                return redirect("updatefaculty")
+        form = FacultyForm(instance=faculty)
+        return render(request,"facultyupdated.html",{"adminuname":auname,"form":form})
+    faculty =Faculty.objects.all()
+    count = Faculty.objects.count()
+    return render(request,"updatefaculty.html",{"adminunmae":auname,"facultydata":faculty,"count":count})
 
 def delete_faculty(request,fid=None):
     auname = request.session["auname"]

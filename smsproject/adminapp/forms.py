@@ -21,3 +21,9 @@ class StudentForm(forms.ModelForm):
         model =Student
         fields ="__all__"
         exclude ={"studentid"}
+
+class FacultyForm(forms.ModelForm):
+    class Meta:
+        model =Faculty
+        fields="__all__"
+        exclude ={"facultyid"}

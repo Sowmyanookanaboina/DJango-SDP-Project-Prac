@@ -1,0 +1,46 @@
+{% extends 'studenthome.html' %}
+
+{% block 'body' %}
+
+<br><br><br>
+<h3 align="center"><u>View Courses</u></h3>
+<br><br>
+
+<h3 align="center" style="color:red">{{msg}}</h3>
+
+<form method="post" action="{% url 'displaystudentcourses' %}">
+  {% csrf_token %}
+  <table align="center" style="border-collapse: separate; border-spacing: 25px;">
+
+
+
+    <tr>
+      <td><label>Select Academic year</label></td>
+      <td>
+        <select name="ay" required>
+          <option value="">--Select--</option>
+          <option value="2023-24">2023-24</option>
+          <option value="2022-23">2022-23</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td><label>Select Semester</label></td>
+      <td>
+        <select name="sem" required>
+          <option value="">--Select--</option>
+          <option value="ODD">ODD-SEM</option>
+          <option value="EVEN">EVEN-SEM</option>
+        </select>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td><input type="submit" value="View" class="button"> </td>
+      <td><input type="reset" value="Clear" class="button"> </td>
+    </tr>
+  </table>
+</form>
+
+{% endblock %}

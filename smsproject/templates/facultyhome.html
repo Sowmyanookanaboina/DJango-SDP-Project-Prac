@@ -1,0 +1,28 @@
+{% load  static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMS PROJECT</title>
+
+    <link type="text/css" rel="stylesheet" href="{% static 'css/adminstyle.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body bgcolor="Lightgrey">
+<h2 align="center">Student Academic Management System</h2>
+<a href="{% url 'facultyhome' %}">HOME</a>&nbsp;&nbsp;&nbsp;
+<a href="{% url 'facultychangepwd' %}">CHANGE PASSWORD</a>&nbsp;&nbsp;&nbsp;
+<a href="{% url 'facultycourses' %}"> MY COURSES</a>&nbsp;&nbsp;&nbsp;
+<a href="{% url 'facultycoursecontent' %}"> COURSE CONTENT </a>&nbsp;&nbsp;&nbsp;
+<a href="{% url 'logout' %}">LOGOUT</a>&nbsp;
+<h3 align="right" style="color:green"><i>Welcome {{fid}}</i></h3>
+
+{% block 'body' %}
+<p> I am in Faculty Home page</p>
+{% endblock %}
+
+</body>
+</html>

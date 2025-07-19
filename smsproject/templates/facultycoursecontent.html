@@ -1,0 +1,21 @@
+{% extends 'facultyhome.html' %}
+
+{% block 'body' %}
+<h3 align="center"><u>ADD Course Content</u> </h3>
+<br><br>
+<center>
+{% if messages %}
+    {% for message in messages %}
+        {{message}}
+    {% endfor %}
+    {% endif %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{form}}
+    <input type="submit" value="Add" class="button">
+    <input type="reset" value="Clear" class="button">
+</form>
+    </center>
+
+{% endblock %}
